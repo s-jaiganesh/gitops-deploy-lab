@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: canary-app-vs
+  namespace: deploy-lab
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - hello-gw       # or your existing ingress gateway in Istio
+  http:
+  - route:
+    - destination:
+        host: canary-app-svc.deploy-lab.svc.cluster.local
+        subset: v1
+        port:
+          number: 80
+      weight: 90
+    - destination:
+        host: canary-app-svc.deploy-lab.svc.cluster.local
+        subset: v2
+        port:
+          number: 80
+      weight: 10

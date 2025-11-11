@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-bluegreen-svc
+  namespace: deploy-lab
+spec:
+  type: ClusterIP
+  selector:
+    app: app-bluegreen
+    version: blue    # 🔹 start with blue
+  ports:
+  - port: 80
+    targetPort: 8095

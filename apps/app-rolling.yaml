@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: deploy-rolling
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/s-jaiganesh/gitops-deploy-lab
+    targetRevision: main
+    path: manifests/rolling
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: deploy-lab
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shadow-app-v2
+  namespace: deploy-lab
+  labels: { app: shadow-app, version: v2 }
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: shadow-app, version: v2 }
+  template:
+    metadata:
+      labels: { app: shadow-app, version: v2 }
+    spec:
+      containers:
+      - name: app
+        image: hashicorp/http-echo:0.2.3
+        args:
+          - "-text=Hello from SHADOW v2"
+          - "-listen=:8080"
+        ports:
+        - containerPort: 8080

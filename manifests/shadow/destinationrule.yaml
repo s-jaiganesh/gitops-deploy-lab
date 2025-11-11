@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: shadow-app-dr
+  namespace: deploy-lab
+spec:
+  host: shadow-app-svc.deploy-lab.svc.cluster.local
+  subsets:
+  - name: v1
+    labels: { version: v1 }
+  - name: v2
+    labels: { version: v2 }

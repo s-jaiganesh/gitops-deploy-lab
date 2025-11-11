@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: shadow-app-vs
+  namespace: deploy-lab
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - hello-gw   # use your active Istio ingress gateway
+  http:
+  - route:
+    - destination:
+        host: shadow-app-svc.deploy-lab.svc.cluster.local
+        subset: v1
+        port:
+          number: 80
+    mirror:
+      host: shadow-app-svc.deploy-lab.svc.cluster.local
+      subset: v2
+      port:
+        number: 80
+    mirrorPercentage:
+      value: 100.0

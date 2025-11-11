@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-rolling-svc
+  namespace: deploy-lab
+spec:
+  type: ClusterIP
+  selector:
+    app: app-rolling
+  ports:
+  - port: 80
+    targetPort: 8098
