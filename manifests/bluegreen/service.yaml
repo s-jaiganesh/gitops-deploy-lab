@@ -7,7 +7,7 @@ spec:
   type: ClusterIP
   selector:
     app: app-bluegreen
-    version: blue    # 🔹 start with blue
+    version: green    # 🔹 start with blue
   ports:
   - port: 80
     targetPort: 80
