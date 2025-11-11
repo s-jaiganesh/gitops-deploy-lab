@@ -7,7 +7,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - hello-gw   # use your active Istio ingress gateway
+  - deploy-lab-gw
   http:
   - route:
     - destination:
