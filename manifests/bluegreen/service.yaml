@@ -10,4 +10,4 @@ spec:
     version: blue    # 🔹 start with blue
   ports:
   - port: 80
-    targetPort: 8095
+    targetPort: 80

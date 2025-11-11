@@ -9,4 +9,4 @@ spec:
     app: app-recreate
   ports:
   - port: 80
-    targetPort: 8097
+    targetPort: 80
